@@ -1,0 +1,18 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "dyndns",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-07-01",
+  "workers_dev": true,
+  "routes": [{ "pattern": "dyndns.example.com", "custom_domain": true }],
+  "vars": {
+    // Zone that records are written into.
+    "ZONE_ID": "YOUR_ZONE_ID",
+    // Any hostname in this zone may be updated (Basic auth still required).
+    "ZONE_NAME": "example.com"
+  }
+  // Secrets (set with `wrangler secret put <NAME>`):
+  //   CF_API_TOKEN   - Cloudflare API token with DNS:Edit on the zone above
+  //   AUTH_USERNAME  - Basic-auth username the router sends
+  //   AUTH_PASSWORD  - Basic-auth password the router sends
+}
